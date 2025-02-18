@@ -1,0 +1,16 @@
+{
+  "name": "pixel-tester",
+  "version": "1.0.0",
+  "description": "A tool for testing UI pixels against design",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^28.1.0",
+    "electron-builder": "^24.9.1"
+  }
+}

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Pixel Tester</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        background: transparent;
+        border: 1px solid white !important;
+        -webkit-app-region: no-drag;
+      }
+      .title-bar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 40px;
+        background: rgba(255, 255, 255, 0.9);
+        display: flex;
+        align-items: center;
+        padding: 0 10px;
+        z-index: 1000;
+        -webkit-app-region: drag;
+      }
+      .browser-controls {
+        display: flex;
+        gap: 10px;
+        -webkit-app-region: no-drag;
+      }
+      .browser-controls button {
+        padding: 5px 10px;
+        cursor: pointer;
+      }
+      #controls {
+        margin: 50px 20px 20px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        background: rgba(255, 255, 255, 0.7);
+        padding: 10px;
+        border-radius: 5px;
+      }
+      #urlInput {
+        width: 300px;
+        padding: 8px;
+        margin-right: 10px;
+      }
+      #loadButton {
+        padding: 8px 15px;
+      }
+      #opacityControl {
+        margin-left: 10px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      #webview-container {
+        margin: 0 20px;
+        background: transparent;
+        display: flex;
+        justify-content: center;
+        overflow: auto;
+      }
+      #webview {
+        width: 1440px; /* Default width */
+        height: calc(100vh - 140px);
+        border: 1px solid rgba(204, 204, 204, 0.3);
+      }
+      .zoom-controls {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-left: 20px;
+        -webkit-app-region: no-drag;
+      }
+      .zoom-controls button {
+        padding: 5px 10px;
+        margin: 0 2px;
+        cursor: pointer;
+      }
+      .width-controls {
+        display: flex;
+        align-items: center;
+        margin-left: 20px;
+        -webkit-app-region: no-drag;
+      }
+      .width-controls input {
+        -webkit-app-region: no-drag;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="title-bar">
+      <div class="browser-controls">
+        <button id="backBtn">←</button>
+        <button id="forwardBtn">→</button>
+        <button id="refreshBtn">↻</button>
+      </div>
+      <div class="zoom-controls">
+        <button id="zoomOutBtn">-</button>
+        <span id="zoomLevel">100%</span>
+        <button id="zoomInBtn">+</button>
+      </div>
+      <div class="width-controls">
+        <span>Width:</span>
+        <input
+          type="number"
+          id="screenWidth"
+          value="1440"
+          min="320"
+          max="3840"
+          style="width: 70px; padding: 4px; margin: 0 5px"
+        />
+        <span>px</span>
+      </div>
+    </div>
+
+    <div id="controls">
+      <input
+        type="text"
+        id="urlInput"
+        placeholder="Enter URL (e.g., http://localhost:3000 or https://example.com)"
+      />
+      <button id="loadButton">Load URL</button>
+      <div id="opacityControl">
+        Opacity:
+        <input type="range" id="opacitySlider" min="10" max="100" value="90" />
+        <span id="opacityValue">90%</span>
+      </div>
+    </div>
+
+    <div id="webview-container">
+      <webview id="webview"></webview>
+    </div>
+
+    <script src="renderer.js"></script>
+  </body>
+</html>
